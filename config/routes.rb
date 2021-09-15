@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'users/loggable_items#index'
+  root to: 'home#index'
 
   # workaround for issue when there is a registration error--rails automagically
   # redirects to the user index?
