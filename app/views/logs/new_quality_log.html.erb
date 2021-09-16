@@ -1,0 +1,25 @@
+<div id="new-quality-log-content" class="container text-center">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>NEW LOG FOR <%= @logged_item.name.upcase %></h2>
+
+      <br><br>
+
+      <%= form_for [@logged_item, @new_log] do |f| %>
+        <div class="form-group">
+          <div class="row">
+            <% (0..10).each do |n| %>
+              <div class="col-md-1">
+                <%= f.radio_button :value, n %>
+                <br>
+                <%= f.label :value, n %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <br>
+        <%= f.submit 'SAVE', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

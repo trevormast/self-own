@@ -8,6 +8,8 @@ class LogsController < ApplicationController
 
   def new
     @new_log = @logged_item.logs.new
+
+    render 'new_quality_log' if @logged_item.value_type == 'quality'
   end
 
   def create
