@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
+html, body                  { overflow-y: scroll; overflow-x: hidden; }
+
+.hidden                     { display: none !important; }

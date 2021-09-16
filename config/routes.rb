@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get '/users', to: redirect('/users/sign_up')
 
   resources :users, only: [:show, :edit, :update]  do
-    resources :loggable_items, only: [:index, :new, :create] do
-      resources :logs, only: [:index, :create]
+    resources :logged_items, only: [:index, :new, :create] do
+      resources :logs, only: [:index, :new, :create]
     end
   end
 end

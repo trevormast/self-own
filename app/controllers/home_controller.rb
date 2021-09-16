@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    render inline: "HOME INDEX", layout: true
+    @logged_items = current_user.logged_items
   end
 end
