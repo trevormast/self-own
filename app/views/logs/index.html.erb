@@ -1,0 +1,25 @@
+<div id="logs-index-content" class="container text-center">
+  <h3><%= @logged_item.name.titleize %> LOGS</h3>
+
+  <br><br>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <% @logs.each do |log|%>
+        <div class="row">
+          <div class="col-12">
+            <%= log.created_at.to_s(:tiny_date) %> -- <%= log.value %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mb-10">
+      <%= link_to 'BACK', root_path, class: 'btn btn-outline-dark'%>
+    </div>
+  </div>
+</div>

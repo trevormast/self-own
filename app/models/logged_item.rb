@@ -5,7 +5,7 @@ class LoggedItem < ApplicationRecord
 
   # ASSOCIATIONS
   belongs_to :user
-  has_many :logs
+  has_many :logs, dependent: :destroy
 
   # VALIDATIONS
   validates_presence_of :name, :value_type, :color
@@ -14,6 +14,10 @@ class LoggedItem < ApplicationRecord
 
   # CALLBACKS
   before_validation :set_color
+
+  def one_step_logging?
+    self.value_type == 'consistency'
+  end
 
   private
 

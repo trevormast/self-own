@@ -3,34 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <h2>NEW LOGGED ITEM</h2>
 
-      <%= form_for [current_user, @new_logged_item] do |f| %>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
-            </div>
-
-            <div class="col-md-6">
-              <%= f.label :value_type %>
-              <%= f.select :value_type, LoggedItem::VALID_VALUE_TYPES, { prompt: 'Select a value type' }, { class: 'form-control' } %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <% Color.names.each do |color| %>
-            <div class="col-3">
-              <%= f.radio_button :color, color %>
-              <br>
-              <%= f.label :color, color %>
-              <%= color_swatch(color) %>
-              <br>
-            </div>
-          <% end %>
-        </div>
-        <br>
-        <%= f.submit 'SAVE', class: 'btn btn-primary' %>
-      <% end %>
+      <%= render partial: 'form', locals: { logged_item: @new_logged_item, submit_action: 'CREATE' } %>
     </div>
   </div>
 </div>

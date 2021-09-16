@@ -1,14 +1,32 @@
 <div id="home-index-content" class="container text-center">
   <h3>LOGGED ITEMS</h3>
 
+  <br><br>
+
   <div class="row">
-    <% @logged_items.each do |logged_item| %>
-      <div class="col-xs-12 col-md-6 offset-md-3 mb-10">
-        <%= logged_item_button(logged_item) %>
+    <div class="col-md-6 offset-md-3">
+      <% @logged_items.each do |logged_item| %>
+        <div class="row">
+          <div class="col-6">
+            <%= logged_item_log_button(logged_item) %>
+          </div>
+          <div class="col-3">
+            <%= logged_item_logs_button(logged_item) %>
+          </div>
+
+          <div class="col-3">
+            <%= logged_item_edit_button(logged_item) %>
+          </div>
+        </div>
         <br>
-      </div>
-    <% end %>
-    <div class="col-xs-12 col-md-6 offset-md-3 mb-10">
+      <% end %>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mb-10">
       <%= link_to 'New Logged Item', new_user_logged_item_path(current_user), class: 'btn btn-outline-dark'%>
     </div>
   </div>

@@ -19,6 +19,24 @@ class LoggedItemsController < ApplicationController
     end
   end
 
+  def edit
+    @logged_item = LoggedItem.find(params[:id])
+  end
+
+  def update
+    @logged_item = LoggedItem.find(params[:id])
+
+    if @logged_item.update(logged_item_params)
+      flash[:notice] = "Logged Item Updated"
+
+      redirect_to root_path
+    else
+      flash[:alert] = @new_logged_item.errors.full_messages.join(', ')
+
+      redirect_to edit_user_logged_item_path(@user, @logged_item)
+    end
+  end
+
   private
 
     def logged_item_params
