@@ -8,7 +8,7 @@
 
       <div class="col-md-6">
         <%= f.label :value_type %>
-        <%= f.select :value_type, LoggedItem::VALID_VALUE_TYPES.map(&:titleize), { prompt: 'Select a value type' }, { class: 'form-control' } %>
+        <%= f.select :value_type, LoggedItem::VALID_VALUE_TYPES, { prompt: 'Select a value type' }, { class: 'form-control' } %>
       </div>
     </div>
   </div>
