@@ -1,7 +1,7 @@
 require 'color'
 
 class LoggedItem < ApplicationRecord
-  VALID_VALUE_TYPES = ['spectrum', 'number', 'binary', 'selection', 'consistency']
+  VALID_VALUE_TYPES = ['quality', 'number', 'binary', 'selection', 'consistency']
 
   # ASSOCIATIONS
   belongs_to :user
