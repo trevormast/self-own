@@ -17,4 +17,5 @@
 
 html, body                  { overflow-y: scroll; overflow-x: hidden; }
 
+.color-swatch               { width: 15px; height: 15px; border-radius: 10%; border: 1px solid black; margin-right: auto; margin-left: auto; }
 .hidden                     { display: none !important; }

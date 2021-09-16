@@ -17,6 +17,17 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <% Color.names.each do |color| %>
+            <div class="col-3">
+              <%= f.radio_button :color, color %>
+              <br>
+              <%= f.label :color, color %>
+              <%= color_swatch(color) %>
+              <br>
+            </div>
+          <% end %>
+        </div>
         <br>
         <%= f.submit 'SAVE', class: 'btn btn-primary' %>
       <% end %>

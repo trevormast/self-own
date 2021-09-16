@@ -18,6 +18,10 @@ module Color
     navy:     { hex: "#000080", rgb: "0,0,128 " },
   }
 
+  def self.names
+    CODES.keys
+  end
+
   module RGB
     def self.to_s(color_name)
       CODES.fetch(color_name.to_sym)[:rgb]
