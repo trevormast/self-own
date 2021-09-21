@@ -1,20 +1,20 @@
-<div id="home-index-content" class="container-fluid text-center">
+<div id="home-index-content" class="text-center">
   <h3>LOGGED ITEMS</h3>
 
   <br><br>
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-12 col-md-8 offset-md-2">
       <% @logged_items.each do |logged_item| %>
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <%= logged_item_log_button(logged_item) %>
           </div>
-          <div class="col-3">
+          <div class="col-md-3">
             <%= logged_item_logs_button(logged_item) %>
           </div>
 
-          <div class="col-3">
+          <div class="col-md-3">
             <%= logged_item_edit_button(logged_item) %>
           </div>
         </div>
