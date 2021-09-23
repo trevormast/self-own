@@ -17,7 +17,7 @@ module LogsHelper
   def chart_values(logs, pad_dates = false)
     logs_array = logs.map { |log| log.attributes.slice("created_at", "value") }
 
-    logs_array = date_padded_logs(logs_array) if pad_dates
+    logs_array = date_padded_logs(logs_array) if (logs_array.present? && pad_dates)
 
     logs_array.each_with_object([]) do |log, array|
       array.push({
