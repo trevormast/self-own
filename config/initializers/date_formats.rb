@@ -2,6 +2,7 @@ Time::DATE_FORMATS[:tiny_date] = '%m/%d/%Y'                         # 2/22/1983
 Time::DATE_FORMATS[:tiny_date_time] = '%m/%d/%Y at %l:%M %p'        # 2/22/1983 at 8:33 AM
 Time::DATE_FORMATS[:month_day_time] = "%B %e at %l:%M %p"           # February 22 at 8:33 AM
 Time::DATE_FORMATS[:month_day_year_time] = "%B %e, %Y at %l:%M %p"  # February 22, 1983 at 8:33 AM
+Time::DATE_FORMATS[:for_d3] = "%Y-%m-%dT00:00:00" #2015-12-01T00:00:00
 
 Date::DATE_FORMATS[:abbrev_month_day] = "%b %-d"                    # Feb 1
 Date::DATE_FORMATS[:month_day_year]  = "%B %e, %Y"                  # February 22, 1983

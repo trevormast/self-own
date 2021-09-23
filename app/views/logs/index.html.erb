@@ -33,7 +33,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     datum = [{
-      values: JSON.parse("<%= j @logs.each_with_object([]) { |log, array| array.push({ date: log.created_at.to_s, value: (log.value || 1).to_f }) }.to_json.html_safe %>"),
+      values: JSON.parse("<%= j @logs.each_with_object([]) { |log, array| array.push({ date: log.created_at.to_s(:for_d3), value: log.value.to_f }) }.to_json.html_safe %>"),
       key: "<%= @logged_item.name.titleize %>",
       color: '#ff7f0e'
     }];
