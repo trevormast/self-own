@@ -22,4 +22,46 @@
       <%= link_to 'BACK', root_path, class: 'btn btn-outline-dark'%>
     </div>
   </div>
+
+  <br><br>
+
+  <div id="log-graph">
+    <svg></svg>
+  </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    datum = [{
+      values: JSON.parse("<%= j @logs.each_with_object([]) { |log, array| array.push({ date: log.created_at.to_s, value: log.value }) }.to_json.html_safe %>"),
+      key: "<%= @logged_item.name.titleize %>",
+      color: '#ff7f0e'
+    }];
+
+
+    nv.addGraph(function() {
+      var chart = nv.models.lineChart()
+        .x(function(d) { return new Date(d.date).getTime(); })   //We can modify the data accessor functions...
+        .y(function(d) { return d.value });
+
+      chart.xAxis
+        .axisLabel('Date')
+        .tickFormat(function(d) {
+          return d3.time.format('%x')(new Date(d))
+        });
+
+      chart.yAxis
+        .axisLabel('Value')
+        .tickFormat(d3.format(',.2f'));
+
+      d3.select('#log-graph svg')
+        .datum(datum)
+        .transition().duration(500)
+        .call(chart);
+
+      nv.utils.windowResize(chart.update);
+
+      return chart;
+    });
+  });
+</script>
