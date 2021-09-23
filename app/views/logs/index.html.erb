@@ -52,7 +52,7 @@
         });
 
       chart.yAxis
-        .axisLabel('Value')
+        .axisLabel('<%= @logged_item.unit.present? ? @logged_item.unit : "Value" %>')
         .tickFormat(d3.format(',.2f'));
 
       d3.select('#log-graph svg')

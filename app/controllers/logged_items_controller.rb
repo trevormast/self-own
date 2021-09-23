@@ -40,7 +40,7 @@ class LoggedItemsController < ApplicationController
   private
 
     def logged_item_params
-      params.require(:logged_item).permit(:name, :value_type, :color)
+      params.require(:logged_item).permit(:name, :value_type, :color, :unit)
     end
 
     def set_user
