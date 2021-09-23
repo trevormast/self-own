@@ -19,6 +19,10 @@ class LoggedItem < ApplicationRecord
     self.value_type == 'consistency'
   end
 
+  def pad_dates?
+    return value_type == 'consistency'
+  end
+
   private
 
     def set_color

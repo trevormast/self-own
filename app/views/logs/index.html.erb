@@ -34,7 +34,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     datum = [{
-      values: JSON.parse("<%= j @logs.each_with_object([]) { |log, array| array.push({ date: log.created_at.to_s(:for_d3), value: log.value.to_f }) }.to_json.html_safe %>"),
+      values: JSON.parse("<%= j chart_values(@logs, @logged_item.pad_dates?).to_json.html_safe %>"),
       key: "<%= @logged_item.name.titleize %>",
       color: '#ff7f0e'
     }];
@@ -53,7 +53,7 @@
 
       chart.yAxis
         .axisLabel('<%= @logged_item.unit.present? ? @logged_item.unit : "Value" %>')
-        .tickFormat(d3.format(',.2f'));
+        .tickFormat(d3.format('<%= chart_tick_type(@logged_item).html_safe %>'));
 
       d3.select('#log-graph svg')
         .datum(datum)

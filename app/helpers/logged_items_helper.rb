@@ -40,6 +40,10 @@ module LoggedItemsHelper
     )
   end
 
+  def chart_tick_type(logged_item)
+    return logged_item.one_step_logging? ? 'd' : ',.2f'
+  end
+
   # def logged_item_text_color(logged_item)
   #   return {
   #     white: %w(red blue green purple brown black),
