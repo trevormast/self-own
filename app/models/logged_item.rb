@@ -7,6 +7,8 @@ class LoggedItem < ApplicationRecord
   belongs_to :user
   has_many :logs, dependent: :destroy
 
+  accepts_nested_attributes_for :logs
+
   # VALIDATIONS
   validates_presence_of :name, :value_type, :color
   validates :value_type, inclusion: VALID_VALUE_TYPES

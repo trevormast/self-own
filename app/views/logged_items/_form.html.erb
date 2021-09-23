@@ -31,5 +31,21 @@
     <% end %>
   </div>
   <br>
+  <% if @logs.present? %>
+    <h3>Logs</h3>
+    <%= f.fields_for :logs, @logs do |ff| %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= ff.label :created_at %>
+          <%= ff.text_field :created_at, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= ff.label :value %>
+          <%= ff.text_field :value, class: 'form-control' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
   <%= f.submit submit_action, class: 'btn btn-primary' %>
 <% end %>

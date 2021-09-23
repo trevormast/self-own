@@ -21,6 +21,8 @@ class LoggedItemsController < ApplicationController
 
   def edit
     @logged_item = LoggedItem.find(params[:id])
+
+    @logs = @logged_item.logs.order(created_at: :asc)
   end
 
   def update
@@ -40,7 +42,7 @@ class LoggedItemsController < ApplicationController
   private
 
     def logged_item_params
-      params.require(:logged_item).permit(:name, :value_type, :color, :unit)
+      params.require(:logged_item).permit(:name, :value_type, :color, :unit, logs_attributes: [:id, :created_at, :value])
     end
 
     def set_user
