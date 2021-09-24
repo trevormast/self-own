@@ -39,11 +39,11 @@
         <%= render partial: 'logs/fields', locals: { builder: ff } %>
       <% end %>
     </div>
+
+    <br>
+
+    <%= content_tag(:a, "Add Log", id: 'add-log-fields', class: 'btn btn-secondary', onclick: 'addNewLog()') %>
   <% end %>
-
-  <br>
-
-  <%= content_tag(:a, "Add Log", id: 'add-log-fields', class: 'btn btn-secondary', onclick: 'addNewLog()') %>
 
   <br><br>
 
