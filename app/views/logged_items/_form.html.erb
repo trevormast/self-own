@@ -32,20 +32,47 @@
   </div>
   <br>
   <% if @logs.present? %>
-    <h3>Logs</h3>
-    <%= f.fields_for :logs, @logs do |ff| %>
-      <div class="row">
-        <div class="col-md-6">
-          <%= ff.label :created_at %>
-          <%= ff.text_field :created_at, class: 'form-control' %>
-        </div>
-        <div class="col-md-6">
-          <%= ff.label :value %>
-          <%= ff.text_field :value, class: 'form-control' %>
-        </div>
-      </div>
-    <% end %>
+    <div id="log-fields" data-log-count="<%= @logs.count %>" >
+      <h3>Logs</h3>
+
+      <%= f.fields_for :logs, @logs do |ff| %>
+        <%= render partial: 'logs/fields', locals: { builder: ff } %>
+      <% end %>
+    </div>
   <% end %>
+
+  <br>
+
+  <%= content_tag(:a, "Add Log", id: 'add-log-fields', class: 'btn btn-secondary', onclick: 'addNewLog()') %>
+
+  <br><br>
 
   <%= f.submit submit_action, class: 'btn btn-primary' %>
 <% end %>
+
+<script type="text/javascript">
+  function addNewLog() {
+    let $logFieldsContainer = $('#log-fields');
+
+    let logIndex = $logFieldsContainer.data('log-count');
+
+    let newLogRow = `
+      <div class="row">
+        <div class="col-md-7">
+          <label for="logged_item_logs_attributes_${ logIndex }_created_at">Created at</label>
+          <input class="form-control" type="text" name="logged_item[logs_attributes][${ logIndex }][created_at]" id="logged_item_logs_attributes_${ logIndex }_created_at">
+        </div>
+        <div class="col-md-4">
+          <label for="logged_item_logs_attributes_${ logIndex }_value">Value</label>
+          <input class="form-control" type="text" value="" name="logged_item[logs_attributes][${ logIndex }][value]" id="logged_item_logs_attributes_${ logIndex }_value">
+        </div>
+      </div>
+    `;
+
+    // append the new log row
+    $logFieldsContainer.append(newLogRow);
+
+    // increment the data-log-count
+    $logFieldsContainer.data('log-count', parseInt(logIndex) + 1);
+  }
+</script>

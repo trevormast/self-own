@@ -33,7 +33,7 @@ class LoggedItemsController < ApplicationController
 
       redirect_to root_path
     else
-      flash[:alert] = @new_logged_item.errors.full_messages.join(', ')
+      flash[:alert] = @logged_item.errors.full_messages.join(', ')
 
       redirect_to edit_user_logged_item_path(@user, @logged_item)
     end
@@ -42,7 +42,7 @@ class LoggedItemsController < ApplicationController
   private
 
     def logged_item_params
-      params.require(:logged_item).permit(:name, :value_type, :color, :unit, logs_attributes: [:id, :created_at, :value])
+      params.require(:logged_item).permit(:name, :value_type, :color, :unit, logs_attributes: [:id, :created_at, :value, :_destroy])
     end
 
     def set_user
